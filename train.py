@@ -23,6 +23,6 @@ model.evalute(test_data)
 
 option = input("Export? (Y/n)")
 
-if not "n":
+if option is not "n":
     print("Exporting...")
     model.export(export_dir=".")
