@@ -7,13 +7,13 @@ cap = cv2.VideoCapture("tcp://10.36.36.61:8000")
 start_time = time.time()
 
 if not cap.isOpened():
-    print("your camera broke kid")
+    print("Camera failed to open")
     exit()
 
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("cant receive frame fuckk..")
+        print("Could not get frame")
         break
     frame = cv2.resize(frame, (1280,960))
     writer.write(frame)
