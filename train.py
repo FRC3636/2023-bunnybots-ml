@@ -12,17 +12,17 @@ spec = model_spec.get("efficientdet_lite0")
 
 classes = ["Buckets"]
 
-train_data = object_detector.DataLoader.from_pascal_voc("./train", "./train", classes)
-validation_data = object_detector.DataLoader.from_pascal_voc("./valid", "./valid", classes)
-test_data = object_detector.DataLoader.from_pascal_voc("./test", "./test", classes)
+train_data = object_detector.DataLoader.from_pascal_voc("./train/images", "./train/annotations", classes)
+validation_data = object_detector.DataLoader.from_pascal_voc("./valid/images", "./valid/annotations", classes)
+test_data = object_detector.DataLoader.from_pascal_voc("./test/images", "./test/annotations", classes)
 
-model = object_detector.create(train_data, model_spec=spec, epochs=20, validation_data=validation_data, train_whole_model=True, batch_size=8)
+model = object_detector.create(train_data, model_spec=spec, epochs=20, validation_data=validation_data, train_whole_model=True, batch_size=8, )
 print(model.summary())
 
-model.evalute(test_data)
+model.evaluate(test_data)
 
 option = input("Export? (Y/n)")
 
-if option is not "n":
+if option != "n":
     print("Exporting...")
     model.export(export_dir=".")
