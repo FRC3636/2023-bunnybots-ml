@@ -1,3 +1,14 @@
 test/
 valid/
 train/
+results/
+*.zip
+*.log
+*.tflite
+*.jpg
+*.png
+*.pb
+README.dataset.txt
+README.roboflow.txt
+*.avi
+*.mp4
