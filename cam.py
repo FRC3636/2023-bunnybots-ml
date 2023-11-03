@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--top_k', type=int, default=3,
                         help='number of categories with highest score to display')
     parser.add_argument('--stream_address', help='IP and port of TCP stream. Format: ip:port', default = "10.36.36.61:8000")
-    parser.add_argument('--threshold', type=float, default=0.4,
+    parser.add_argument('--threshold', type=float, default=0.2,
                         help='detector score threshold')
     parser.add_argument("--timeout", type=int, default=30, help="time to run in seconds")
     args = parser.parse_args()
@@ -37,7 +37,7 @@ def main():
 
     writer = cv2.VideoWriter('output1.avi', cv2.VideoWriter_fourcc(*'DIVX'), 30, (int(cap.get(3)), int(cap.get(4))))
 
-    start_time = time.time()
+    # start_time = time.time()
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -59,12 +59,13 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-        if (time.time() - start_time) > args.timeout:
-            print("Stopping...")
-            break
+        # if (time.time() - start_time) > args.timeout:
+        #     print("Stopping...")
+        #     break
 
 
     cap.release()
+    writer.release()
     cv2.destroyAllWindows()
 
 def append_objs_to_img(cv2_im, inference_size, objs, labels):
