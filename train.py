@@ -10,6 +10,8 @@ logging.set_verbosity(logging.ERROR)
 
 spec = model_spec.get("efficientdet_lite0")
 
+spec.strategy = 'gpus'
+
 classes = ["blue", "red"]
 
 train_data = object_detector.DataLoader.from_pascal_voc("./train", "./train", classes)
