@@ -49,7 +49,7 @@ def main():
         cv2_im_rgb = cv2.resize(cv2_im_rgb, inference_size)
         before_inference = time.time()
         run_inference(interpreter, cv2_im_rgb.tobytes())
-        print(time.time() - before_inference)
+        print((time.time() - before_inference) * 1000)
         objs = get_objects(interpreter, args.threshold)[:args.top_k]
         cv2_im = append_objs_to_img(cv2_im, inference_size, objs, labels)
 
