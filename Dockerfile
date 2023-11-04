@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.2.2-runtime-rockylinux8
+FROM nvidia/cuda:12.2.2-cudnn8-runtime-rockylinux8
 
 RUN dnf install python39 python39-pip openssh-server -y
 
