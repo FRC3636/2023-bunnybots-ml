@@ -8,3 +8,5 @@ COPY ./requirements.txt ./requirements.txt
 RUN python3.9 -m pip install -r requirements.txt
 
 COPY . .
+
+ENTRYPOINT ["/usr/bin/bash"]
